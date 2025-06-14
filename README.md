@@ -70,3 +70,7 @@ Append to File:
 Takes the filename and new content.
 
 Adds the content at the end of the file without modifying existing data.
+
+
+##OUTPUT##
+![Image](https://github.com/user-attachments/assets/f69f220d-3fd2-4156-b323-c05dcb07b974)
