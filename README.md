@@ -7,69 +7,142 @@
 *MENTOR*: NEELA SANTOSH KUMAR
 ##DESCRIPTION## 
 Overview
-The File Management Tool is a C++ console application designed to demonstrate essential file-handling operations including reading, writing, and appending data to and from text files. Built using core C++ features, the tool is an ideal example for learners, educators, and developers looking to understand how file streams (fstream, ifstream, ofstream) are used in C++ to manage data stored on disk.
 
-This lightweight, easy-to-understand application covers all the fundamental techniques of file input/output (I/O) and serves as a practical resource for integrating file operations into larger software systems.
 
-✨ Features
-Read from a file: Load and display the contents of a text file line-by-line.
+📄 File Operations in C++
+This C++ program demonstrates basic file handling operations — writing, appending, and reading text from a file — using standard file I/O classes from the C++ Standard Library. It provides a simple menu-driven interface to interact with a file named sample.txt. Users can choose to write new content, append additional content, or read the existing content of the file.
 
-Write to a file: Create a new text file or overwrite an existing one with user-defined data.
+🔧 Features
+Overwrite File: Write new data to a file, replacing any existing content.
 
-Append to a file: Add new content to an existing file without erasing previous data.
+Append to File: Add new lines of text to the end of an existing file.
 
-Error handling: Built-in checks for file accessibility and proper error messaging for missing or corrupt files.
+Read File: Display the contents of the file on the screen.
 
-Console interaction: Simple text-based UI using standard input/output streams for intuitive user interaction.
+Interactive Menu: Choose operations through a simple numeric menu.
 
-💡 Use Cases
-This tool is ideal for:
-
-Students learning C++ file I/O concepts.
-
-Instructors who want a basic file-handling demo.
-
-Developers building CLI-based file manipulation tools.
-
-Projects requiring text logging, note-taking, or data archiving in files.
-
-🛠️ Technologies Used
-C++ (C++11 and above) – Core programming language.
-
-Standard Library (iostream, fstream, string) – For stream-based input/output, string handling, and file processing.
-
-📦 File Structure
+🧠 Code Breakdown
+1. Header Files and Namespace
 cpp
-Copy code
-/FileManagementTool
-│
-├── main.cpp          // Main source file containing application logic
-├── README.md         // Project description
-└── sample.txt        // Example file for testing (optional)
-🚀 How It Works
-The tool offers a simple menu-driven interface where users can choose one of the following operations:
+Copy
+Edit
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+iostream: For console input/output (e.g., cin, cout).
 
-Write to File:
+fstream: For file stream operations.
 
-Prompts the user to enter a filename and the content.
+string: To handle string data.
 
-Creates or overwrites the specified file.
+using namespace std: Allows direct access to standard library components without prefixing std::.
 
-Saves the input data to the file.
+2. Writing to a File
+cpp
+Copy
+Edit
+void writeToFile(const string& filename)
+Opens the file using ofstream in default mode (which overwrites any existing content).
 
-Read from File:
+Prompts the user to enter lines of text until they type "exit".
 
-Requests the filename.
+Each line is written to the file followed by a newline.
 
-Opens and reads the content line-by-line.
+Closes the file after writing is complete.
 
-Displays the content in the console.
+This function is useful when starting fresh with a new set of data.
 
-Append to File:
+3. Appending to a File
+cpp
+Copy
+Edit
+void appendToFile(const string& filename)
+Opens the file using ofstream in ios::app (append) mode.
 
-Takes the filename and new content.
+Like the write function, it accepts input until "exit" is entered.
 
-Adds the content at the end of the file without modifying existing data.
+New lines are added to the end of the file without erasing existing content.
+
+Ensures the data is preserved across multiple runs.
+
+This function allows adding more information without losing previous entries.
+
+4. Reading from a File
+cpp
+Copy
+Edit
+void readFromFile(const string& filename)
+Uses ifstream to open the file for reading.
+
+Reads and prints each line until the end of the file is reached.
+
+Displays the entire file content to the console.
+
+This function provides a way to view what's currently stored in the file.
+
+5. Main Menu Interface
+cpp
+Copy
+Edit
+int main()
+Contains a loop that displays a menu with four options:
+
+Write to file
+
+Append to file
+
+Read from file
+
+Exit
+
+Based on the user's choice, it calls the appropriate function.
+
+Uses cin.ignore() after cin >> choice to clear the input buffer before taking multiline string input using getline().
+
+The loop continues until the user selects option 4 (Exit).
+
+📁 File Used
+sample.txt: This is the file the program reads from and writes to. It is created automatically if it does not already exist.
+
+🏁 How to Run
+Compile the Program:
+
+bash
+Copy
+Edit
+g++ -o file_operations file_operations.cpp
+Run the Program:
+
+bash
+Copy
+Edit
+./file_operations
+Follow the Menu Prompts:
+
+Enter text and type exit when done.
+
+View the file content using option 3.
+
+🧪 Example Usage
+pgsql
+Copy
+Edit
+--- File Operations Menu ---
+1. Write to file (overwrite)
+2. Append to file
+3. Read from file
+4. Exit
+Enter your choice: 1
+Enter text to write to the file (type 'exit' to finish):
+Hello, world!
+Welcome to file handling in C++.
+exit
+Data written successfully.
+✅ Conclusion
+This simple file handling utility is ideal for beginners learning how to manage file input/output in C++. It uses core concepts like streams (ifstream, ofstream), control flow (switch, do-while), and string handling to provide a user-friendly command-line experience.
+
+
 
 
 ##OUTPUT##
